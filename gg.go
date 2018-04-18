@@ -18,7 +18,7 @@ func Run(ctx context.Context, rs ...Runner) error {
 	for _, r := range rs {
 		eg.Go(func(runner Runner) func() error {
 			return func() error {
-				return r.Run(ctx)
+				return runner.Run(ctx)
 			}
 		}(r))
 	}
